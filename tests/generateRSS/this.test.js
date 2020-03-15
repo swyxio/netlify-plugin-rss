@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // resolve all files
-const dirToScan = path.join(__dirname, 'publishDir/blogs');
+const dirToScan = path.join(__dirname, 'publishDir/blog');
 
 // debug
 // console.log({ publishDirPath, manifest });

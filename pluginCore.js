@@ -106,6 +106,7 @@ exports.extractMetadataFromFile = async function({
   debugMode = false // if true, log more things for plugin debugging
 }) {
   const readHTML = await readFile(fileToRead);
+  const $ = cheerio.load(readHTML);
   let publishDate;
   if (publishDateSelector) {
     publishDate = $(publishDateSelector).text();
@@ -117,7 +118,6 @@ exports.extractMetadataFromFile = async function({
     } = fs.statSync(fileToRead);
     publishDate = birthtime;
   }
-  const $ = cheerio.load(readHTML);
   // // not as reliable?
   const title = $(titleSelector).attr('content');
   const contents = $(contentSelector).html();

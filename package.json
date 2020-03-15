@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jest",
     "test:update": "jest --updateSnapshot",
-    "version": "yarn test && auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
+    "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
     "prepublishOnly": "git push && git push --tags && gh-release"
   },
   "keywords": [

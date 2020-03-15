@@ -14,8 +14,8 @@ module.exports = function netlifyPlugin(conf) {
         rssFeedPath = path.join(dirToScan, '/rss.xml'),
         ...rest
       },
-      constants,
-      utils: { build }
+      constants
+      // utils: { build }
     }) => {
       const { BUILD_DIR } = constants; // from netlify build or testing fixture
       dirToScan = dirToScan ? path.join(BUILD_DIR, dirToScan) : BUILD_DIR;
@@ -27,7 +27,7 @@ module.exports = function netlifyPlugin(conf) {
       console.log(
         `attempting to write RSS feed to ${chalk.yellow(rssFeedPath)}...`
       );
-      fs.writeFileSync(rssFeedPath, rss);
+      fs.writeFileSync(path.join(BUILD_DIR, rssFeedPath), rss);
       console.log(
         `Successfully wrote RSS feed to ${chalk.yellow(rssFeedPath)}`
       );

@@ -10,6 +10,7 @@
   "scripts": {
     "test": "jest",
     "test:update": "jest --updateSnapshot",
+    "fixture": "node fixtures/rssfixture.js",
     "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
     "prepublishOnly": "git push && git push --tags && gh-release"
   },

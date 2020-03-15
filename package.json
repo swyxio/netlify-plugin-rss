@@ -1,0 +1,38 @@
+{
+  "name": "netlify-plugin-rss",
+  "version": "0.0.1",
+  "description": "netlify-plugin-rss",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sw-yx/netlify-plugin-rss.git"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:update": "jest --updateSnapshot",
+    "version": "yarn test && auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
+    "prepublishOnly": "git push && git push --tags && gh-release"
+  },
+  "keywords": [
+    "link-checking",
+    "netlify",
+    "build",
+    "plugins"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sw-yx/netlify-plugin-rss/issues"
+  },
+  "homepage": "https://github.com/sw-yx/netlify-plugin-rss#readme",
+  "devDependencies": {
+    "auto-changelog": "^1.16.2",
+    "gh-release": "^3.5.0",
+    "jest": "^25.1.0"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "rss": "^1.2.2",
+    "url-join": "^4.0.1"
+  }
+}

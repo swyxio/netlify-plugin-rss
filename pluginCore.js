@@ -1,0 +1,161 @@
+const path = require('path');
+const urljoin = require('url-join');
+const fs = require('fs');
+const cheerio = require('cheerio');
+const RSS = require('rss');
+const { promisify } = require('util');
+const readDir = promisify(fs.readdir);
+const readFile = promisify(fs.readFile);
+const chalk = require('chalk');
+
+exports.generateRSS = async function(opts) {
+  // combines scanDir and extractMetadataFromFile
+  // returns RSS
+  const dirToScan = required(opts, 'dirToScan'); // eg 'publish'
+  const authorName = required(opts, 'authorName'); // eg 'myname'
+  const site_url = required(opts, 'site_url'); // eg 'https://swyx.io',
+  const feed_url = required(opts, 'feed_url'); // eg 'https://swyx.io/rss.xml',
+  const {
+    title = opts.title || 'RSS Feed',
+    description = opts.rssDescription || 'RSS Feed for ' + rssFeedUrl,
+    image_url = opts.rssFaviconUrl,
+    docs = 'http://example.com/rss/docs.html',
+    managingEditor = authorName,
+    webMaster = authorName,
+    copyright = new Date().getFullYear() + ' ' + authorName,
+    language = 'en',
+    categories = ['Tech', 'Blog'],
+    pubDate = new Date().toUTCString(),
+    ttl = '60' // at most refresh every hour http://www.therssweblog.com/?guid=20070529130637
+  } = opts;
+  const feed = new RSS({
+    title,
+    description,
+    feed_url,
+    site_url,
+    image_url,
+    docs,
+    managingEditor,
+    webMaster,
+    copyright,
+    language,
+    categories,
+    pubDate,
+    ttl
+  });
+  const filesToScan = await exports.scanDir({ dirToScan });
+  if (!opts.testMode) {
+    console.log(
+      `Found ${chalk.yellow(filesToScan.length)} files in ${chalk.blue(
+        'dirToScan'
+      )}: ${chalk.yellow(dirToScan)}`
+    );
+  }
+  const outputs = await Promise.all(
+    filesToScan
+      .map(async (filepath) => {
+        const res = await exports.extractMetadataFromFile({
+          fileToRead: path.join(dirToScan, filepath),
+          ...opts
+        });
+        res.filepath = filepath;
+        return res;
+      })
+      .sort((a, b) => new Date(a.publishDate) - new Date(b.publishDate))
+  );
+
+  outputs.forEach((item) => {
+    feed.item({
+      title: item.title,
+      url: urljoin(
+        site_url,
+        opts.prefix || '', // optional! TODO: document!
+        path.relative(item.filepath, dirToScan)
+      ),
+      description: item.description,
+      date: item.publishDate,
+      // todo: enclosure?
+      custom_elements: item.contents && [
+        {
+          'content:encoded': {
+            _cdata: item.contents
+          }
+        }
+      ]
+    });
+  });
+  return feed.xml();
+};
+
+function required(obj, key) {
+  if (typeof obj[key] === 'undefined') {
+    console.error('Error: ' + key + ' is required');
+    process.exit(1);
+  }
+  return obj[key];
+}
+
+exports.extractMetadataFromFile = async function({
+  fileToRead,
+  contentSelector = 'main', // any css selector works
+  publishDateSelector = null, // if null, use date created
+  // probably wont change these
+  descriptionSelector = 'meta[name=description]',
+  titleSelector = 'meta[property="og:title"]',
+  testMode = false, // if true, silence warnings that would normally be logged, for test running aesthetics
+  debugMode = false // if true, log more things for plugin debugging
+}) {
+  const readHTML = await readFile(fileToRead);
+  let publishDate;
+  if (publishDateSelector) {
+    publishDate = $(publishDateSelector).text();
+  } else {
+    // no publishDate specified, use file created date
+    const {
+      birthtime // created time
+      // mtime // modified time
+    } = fs.statSync(fileToRead);
+    publishDate = birthtime;
+  }
+  const $ = cheerio.load(readHTML);
+  // // not as reliable?
+  const title = $(titleSelector).attr('content');
+  const contents = $(contentSelector).html();
+  const output = {
+    title,
+    contents,
+    description: $(descriptionSelector).attr('content'),
+    publishDate
+    // URL is also important but we expect you to insert that elsewhere
+  };
+  if (debugMode) console.log({ output });
+  return output;
+};
+
+exports.scanDir = async function({
+  dirToScan,
+  testMode = false, // if true, silence warnings that would normally be logged, for test running aesthetics
+  debugMode = false // if true, log more things for plugin debugging
+}) {
+  let allHtmlFiles = await walk(dirToScan);
+  return allHtmlFiles.map((filepath) => path.relative(dirToScan, filepath));
+};
+
+// recursive crawl to get a list of filepaths
+// https://gist.github.com/kethinov/6658166
+var walk = async function(dir, filelist) {
+  var files = await readDir(dir);
+  filelist = filelist || [];
+  await Promise.all(
+    files.map(async function(file) {
+      const dirfile = path.join(dir, file);
+      if (fs.statSync(dirfile).isDirectory()) {
+        filelist = await walk(dirfile + '/', filelist);
+      } else {
+        // swyx modified
+        if (dirfile.endsWith('.html')) filelist.push(dirfile);
+      }
+    })
+  );
+  return filelist;
+};

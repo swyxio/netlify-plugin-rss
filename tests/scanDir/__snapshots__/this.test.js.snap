@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`scanDir works 1`] = `
+Array [
+  "subdir/blog3.html",
+  "blogs/blog3/blog2.html",
+]
+`;

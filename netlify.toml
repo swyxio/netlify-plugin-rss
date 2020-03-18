@@ -1,6 +1,7 @@
 [build]
   command = "echo 'hi'"
   publish = "demo/publishDir"
+  base = "demo/"
 
 [[plugins]]
   package = "./index.js"

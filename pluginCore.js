@@ -11,7 +11,8 @@ const chalk = require('chalk');
 exports.generateRSS = async function(opts) {
   // combines scanDir and extractMetadataFromFile
   // returns RSS
-  const dirToScan = required(opts, 'dirToScan'); // eg 'publish'
+  const BUILD_DIR = required(opts, 'BUILD_DIR'); // eg 'publish'
+  const dirToScan = required(opts, 'dirToScan'); // eg '/blog'
   const authorName = required(opts, 'authorName'); // eg 'myname'
   const site_url = required(opts, 'site_url'); // eg 'https://swyx.io',
   const feed_url = required(opts, 'feed_url'); // eg 'https://swyx.io/rss.xml',
@@ -43,7 +44,7 @@ exports.generateRSS = async function(opts) {
     pubDate,
     ttl
   });
-  const filesToScan = await exports.scanDir({ dirToScan });
+  const filesToScan = await exports.scanDir({ dirToScan, BUILD_DIR });
   if (!opts.testMode) {
     console.log(
       `Found ${chalk.yellow(filesToScan.length)} files in ${chalk.blue(
@@ -55,7 +56,7 @@ exports.generateRSS = async function(opts) {
     filesToScan
       .map(async (filepath) => {
         const res = await exports.extractMetadataFromFile({
-          fileToRead: path.join(dirToScan, filepath),
+          fileToRead: path.join(BUILD_DIR, dirToScan, filepath),
           ...opts
         });
         res.filepath = filepath;
@@ -70,7 +71,8 @@ exports.generateRSS = async function(opts) {
       url: urljoin(
         site_url,
         opts.prefix || '', // optional! TODO: document!
-        path.relative(item.filepath, dirToScan)
+        // path.relative(item.filepath, dirToScan)
+        path.join(dirToScan, item.filepath)
       ),
       description: item.description,
       date: item.publishDate,
@@ -133,12 +135,15 @@ exports.extractMetadataFromFile = async function({
 };
 
 exports.scanDir = async function({
+  BUILD_DIR,
   dirToScan,
   testMode = false, // if true, silence warnings that would normally be logged, for test running aesthetics
   debugMode = false // if true, log more things for plugin debugging
 }) {
-  let allHtmlFiles = await walk(dirToScan);
-  return allHtmlFiles.map((filepath) => path.relative(dirToScan, filepath));
+  let allHtmlFiles = await walk(path.join(BUILD_DIR, dirToScan));
+  return allHtmlFiles.map((filepath) =>
+    path.relative(path.join(BUILD_DIR, dirToScan), filepath)
+  );
 };
 
 // recursive crawl to get a list of filepaths

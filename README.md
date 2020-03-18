@@ -25,7 +25,7 @@ package = "netlify-plugin-rss"
   feed_url = "https://swyx.io/rss.xml"
   title = "swyx RSS Feed"
   rssDescription = "swyx.io RSS Feed"
-  categories = "['Technology', 'JAMstack', 'Web Development]"
+  categories = ['Technology', 'JAMstack', 'Web Development']
 
   # # optional configs, defaults shown
   # rssFaviconUrl = "https://swyx.io/favicon.png"

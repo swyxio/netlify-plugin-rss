@@ -10,26 +10,15 @@
 		<link>
 			https://swyx.io
 		</link>
-		<image>
-			<url>
-				https://swyx.io/favicon.png
-			</url>
-			<title>
-				swyx RSS Feed
-			</title>
-			<link>
-				https://swyx.io
-			</link>
-		</image>
 		<generator>
 			RSS for Node
 		</generator>
 		<lastBuildDate>
-			Sun, 15 Mar 2020 05:12:20 GMT
+			Wed, 18 Mar 2020 20:26:53 GMT
 		</lastBuildDate>
 		<link href="https://swyx.io/rss.xml" rel="self" type="application/rss+xml" />
 		<pubDate>
-			Sun, 15 Mar 2020 05:12:20 GMT
+			Wed, 18 Mar 2020 20:26:53 GMT
 		</pubDate>
 		<copyright>
 			<![CDATA[2020 swyx]]>
@@ -53,13 +42,10 @@
 			<![CDATA[Technology]]>
 		</category>
 		<category>
-			<![CDATA[JavaScript]]>
+			<![CDATA[JAMstack]]>
 		</category>
 		<category>
-			<![CDATA[React]]>
-		</category>
-		<category>
-			<![CDATA[Svelte]]>
+			<![CDATA[Web Development]]>
 		</category>
 		<item>
 			<title>
@@ -77,20 +63,24 @@
 				]]>
 			</description>
 			<link>
-				https://swyx.io/../fixtures/publishDir/blog
+				https://swyx.io/blog/blog1.html
 			</link>
 			<guid isPermaLink="true">
-				https://swyx.io/../fixtures/publishDir/blog
+				https://swyx.io/blog/blog1.html
 			</guid>
 			<pubDate>
-				Wed, 01 Jan 2020 05:00:00 GMT
+				Sun, 15 Mar 2020 05:03:26 GMT
 			</pubDate>
 			<encoded>
 				<![CDATA[
+				<div class="postPage">
+				<div class="singlePost flexyColumn">
 				<div class="postDate">1 January, 2020</div>
 				<h1>This is our First Post</h1>
 				<div>
 				some words for our first post
+				</div>
+				</div>
 				</div>
 				]]>
 			</encoded>
@@ -111,20 +101,24 @@
 				]]>
 			</description>
 			<link>
-				https://swyx.io/../../fixtures/publishDir/blog
+				https://swyx.io/blog/subdir/blog2.html
 			</link>
 			<guid isPermaLink="true">
-				https://swyx.io/../../fixtures/publishDir/blog
+				https://swyx.io/blog/subdir/blog2.html
 			</guid>
 			<pubDate>
-				Sat, 01 Feb 2020 05:00:00 GMT
+				Sun, 15 Mar 2020 05:03:26 GMT
 			</pubDate>
 			<encoded>
 				<![CDATA[
+				<div class="postPage">
+				<div class="singlePost flexyColumn">
 				<div class="postDate">1 February, 2020</div>
 				<h1>This is our Second Post</h1>
 				<div>
 				some words for our second post
+				</div>
+				</div>
 				</div>
 				]]>
 			</encoded>
@@ -145,20 +139,24 @@
 				]]>
 			</description>
 			<link>
-				https://swyx.io/../../fixtures/publishDir/blog
+				https://swyx.io/blog/subdir/blog3.html
 			</link>
 			<guid isPermaLink="true">
-				https://swyx.io/../../fixtures/publishDir/blog
+				https://swyx.io/blog/subdir/blog3.html
 			</guid>
 			<pubDate>
-				Sun, 01 Mar 2020 05:00:00 GMT
+				Sun, 15 Mar 2020 05:03:26 GMT
 			</pubDate>
 			<encoded>
 				<![CDATA[
+				<div class="postPage">
+				<div class="singlePost flexyColumn">
 				<div class="postDate">1 March, 2020</div>
 				<h1>This is our Third Post</h1>
 				<div>
 				some words for our 3rd post
+				</div>
+				</div>
 				</div>
 				]]>
 			</encoded>

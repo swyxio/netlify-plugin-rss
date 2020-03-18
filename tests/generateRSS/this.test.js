@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 // resolve all files
-const dirToScan = path.join(__dirname, 'publishDir/blog');
-
+const BUILD_DIR = path.join(__dirname, 'publishDir');
+const dirToScan = '/blog';
 // debug
 // console.log({ publishDirPath, manifest });
 
@@ -12,6 +12,7 @@ const pluginCore = require('../../pluginCore.js');
 test('generateRSS works', async () => {
   const rssFeed = await pluginCore.generateRSS({
     dirToScan,
+    BUILD_DIR,
     authorName: 'swyx',
     site_url: 'https://swyx.io',
     feed_url: 'https://swyx.io/rss.xml',

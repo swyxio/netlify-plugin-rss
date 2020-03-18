@@ -9,25 +9,24 @@ module.exports = function netlifyPlugin(conf) {
     name: 'netlify-plugin-rss',
     /* index html files preDeploy */
     onPostBuild: async ({
+      constants: { BUILD_DIR },
       pluginConfig: {
         dirToScan,
-        rssFeedPath = path.join(dirToScan, '/rss.xml'),
+        rssFeedPath = path.join(BUILD_DIR, '/rss.xml'),
         ...rest
-      },
-      constants
+      }
       // utils: { build }
     }) => {
-      const { BUILD_DIR } = constants; // from netlify build or testing fixture
-      dirToScan = dirToScan ? path.join(BUILD_DIR, dirToScan) : BUILD_DIR;
       console.log(`Scanning ${chalk.yellow(rssFeedPath)} for RSS Feed`);
       const rss = await pluginCore.generateRSS({
         dirToScan,
+        BUILD_DIR,
         ...rest
       });
       console.log(
         `attempting to write RSS feed to ${chalk.yellow(rssFeedPath)}...`
       );
-      fs.writeFileSync(path.join(BUILD_DIR, rssFeedPath), rss);
+      fs.writeFileSync(rssFeedPath, rss);
       console.log(
         `Successfully wrote RSS feed to ${chalk.yellow(rssFeedPath)}`
       );

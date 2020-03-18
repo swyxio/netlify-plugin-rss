@@ -1,2 +1,2 @@
-# For Apache, to show `feed.xml` when browsing to directory /feed/ (hide the file!)
-DirectoryIndex feed.xml
+# For Apache, to show `rss.xml` when browsing to directory /feed/ (hide the file!)
+DirectoryIndex rss.xml

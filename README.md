@@ -8,7 +8,7 @@ You define a folder, the plugin recursively scans everything inside, sorts by pu
 
 This plugin uses [Cheerio](https://github.com/cheeriojs/cheerio) to extract data from your HTML, so you can use jQuery/CSS selectors to customize how to extract your content, title, publish date, and description metadata per item.
 
-See our [Fixtures](/fixtures/publishDir) for example of generated RSS from a `/blog` folder with nested html files.
+See our [Demo](/demo/publishDir) for example of generated RSS from a `/blog` folder with nested html files.
 
 ## Usage
 

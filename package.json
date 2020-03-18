@@ -8,6 +8,7 @@
     "url": "git+https://github.com/sw-yx/netlify-plugin-rss.git"
   },
   "scripts": {
+    "build": "netlify build",
     "test": "jest",
     "test:update": "jest --updateSnapshot",
     "fixture": "node fixtures/rssfixture.js",

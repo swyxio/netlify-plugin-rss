@@ -1,1 +1,22 @@
 name: netlify-plugin-rss
+inputs:
+  - name: dirToScan
+  - name: authorName
+  - name: site_url
+  - name: feed_url
+  - name: title
+  - name: rssDescription
+  - name: categories
+  - name: rssFaviconUrl
+  - name: docs
+  - name: managingEditor
+  - name: webMaster
+  - name: copyright
+  - name: language
+  - name: pubDate
+  - name: ttl
+  - name: contentSelector
+  - name: publishDateSelector
+  - name: descriptionSelector
+  - name: titleSelector
+  - name: debugMode

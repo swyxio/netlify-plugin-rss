@@ -27,7 +27,7 @@ const netlifyPlugin = require('../index.js');
     },
     constants: {
       // have to mock this too
-      BUILD_DIR: 'fixtures/publishDir'
+      BUILD_DIR: 'demo/publishDir'
     }
   });
 })();

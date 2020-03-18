@@ -12,7 +12,7 @@ See our [Demo](/demo/publishDir) for example of generated RSS from a `/blog` fol
 
 ## Usage
 
-To install, add the following lines to your `netlify.toml` file:
+To install, add the following lines to your `netlify.toml` file. For best results, we recommend customizing `publishDateSelector` and `publishDateSelector`:
 
 ```toml
 [[plugins]]
@@ -40,7 +40,7 @@ package = "netlify-plugin-rss"
   # # cheerio selectors for extractMetadataFromFile
   # # defaults shown
   # contentSelector = "main"
-  # publishDateSelector = # empty
+  # publishDateSelector = # if not specified, we use the date of file creation
   # descriptionSelector = "meta[name=description]" # probably no need to change
   # titleSelector = "meta[property=\"og:title\"]" # probably no need to change
 
@@ -53,4 +53,5 @@ package = "netlify-plugin-rss"
 
 WE ARE SEEKING MAINTAINERS. 
 
-- no future plans yet we just need to test this out a lot
+- limit RSS length to last X posts?
+- other feature requests?

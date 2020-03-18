@@ -1,12 +1,12 @@
 {
-  "title": "Your Blog Name",
-  "url": "https://myurl.com/",
+  "title": "Netlify Plugin RSS",
+  "url": "https://github.com/sw-yx/netlify-plugin-rss",
   "description": "I am writing about my experiences as a naval navel-gazer.",
   "feed": {
     "subtitle": "I am writing about my experiences as a naval navel-gazer.",
-    "filename": "feed.xml",
-    "path": "/feed/feed.xml",
-    "id": "https://myurl.com/"
+    "filename": "rss.xml",
+    "path": "/rss.xml",
+    "id": "https://github.com/sw-yx/netlify-plugin-rss"
   },
   "author": {
     "name": "Your Name Here",

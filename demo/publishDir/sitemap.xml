@@ -2,62 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://myurl.com/posts/firstpost/</loc>
+    <loc>https://github.com/posts/firstpost/</loc>
     <lastmod>2018-05-01</lastmod>
   </url>
   
   <url>
-    <loc>https://myurl.com/posts/secondpost/</loc>
+    <loc>https://github.com/posts/secondpost/</loc>
     <lastmod>2018-07-04</lastmod>
   </url>
   
   <url>
-    <loc>https://myurl.com/posts/thirdpost/</loc>
+    <loc>https://github.com/posts/thirdpost/</loc>
     <lastmod>2018-08-24</lastmod>
   </url>
   
   <url>
-    <loc>https://myurl.com/posts/fourthpost/</loc>
+    <loc>https://github.com/posts/fourthpost/</loc>
     <lastmod>2018-09-30</lastmod>
   </url>
   
   <url>
-    <loc>https://myurl.com/about/</loc>
+    <loc>https://github.com/about/</loc>
     <lastmod>2020-03-18</lastmod>
   </url>
   
   <url>
-    <loc>https://myurl.com/posts/</loc>
+    <loc>https://github.com/posts/</loc>
     <lastmod>2020-03-18</lastmod>
   </url>
   
   <url>
-    <loc>https://myurl.com/</loc>
+    <loc>https://github.com/</loc>
     <lastmod>2020-03-18</lastmod>
   </url>
   
   <url>
-    <loc>https://myurl.com/page-list/</loc>
+    <loc>https://github.com/page-list/</loc>
     <lastmod>2020-03-18</lastmod>
   </url>
   
   <url>
-    <loc>https://myurl.com/tags/</loc>
+    <loc>https://github.com/tags/</loc>
     <lastmod>2020-03-18</lastmod>
   </url>
   
   <url>
-    <loc>https://myurl.com/tags/another-tag/</loc>
+    <loc>https://github.com/tags/second-tag/</loc>
     <lastmod>2020-03-18</lastmod>
   </url>
   
   <url>
-    <loc>https://myurl.com/tags/number-2/</loc>
+    <loc>https://github.com/tags/number-2/</loc>
     <lastmod>2020-03-18</lastmod>
   </url>
   
   <url>
-    <loc>https://myurl.com/tags/second-tag/</loc>
+    <loc>https://github.com/tags/another-tag/</loc>
     <lastmod>2020-03-18</lastmod>
   </url>
 </urlset>

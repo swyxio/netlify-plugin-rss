@@ -7,9 +7,8 @@
   [plugins.inputs]
     # required configs, customize as needed
     dirToScan = "/posts" # a subfolder to scan. "/" to scan all
-    authorName = "swyx"
-    site_url = "https://swyx.io"
-    feed_url = "https://swyx.io/rss.xml"
-    title = "swyx RSS Feed"
-    rssDescription = "swyx.io RSS Feed"
+    authorName = "netlify"
+    site_url = "https://netlify-plugin-rss.netlify.com/"
+    title = "netlify RSS Feed"
+    rssDescription = "netlify-plugin-rss RSS Feed"
     categories = ['Technology', 'JAMstack', 'Web Development']

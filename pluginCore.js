@@ -15,7 +15,7 @@ exports.generateRSS = async function(opts) {
   const dirToScan = required(opts, 'dirToScan'); // eg '/blog'
   const authorName = required(opts, 'authorName'); // eg 'myname'
   const site_url = required(opts, 'site_url'); // eg 'https://swyx.io',
-  const feed_url = required(opts, 'feed_url'); // eg 'https://swyx.io/rss.xml',
+  const feed_url = `${site_url}/rss.xml`; // may want to make this configurable in future
   const {
     title = opts.title || 'RSS Feed',
     description = opts.rssDescription || 'RSS Feed for ' + rssFeedUrl,

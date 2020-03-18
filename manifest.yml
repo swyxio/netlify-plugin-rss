@@ -1,3 +1,4 @@
+# https://github.com/netlify/build/blob/master/docs/creating-a-plugin.md#adding-inputs-to-plugins
 name: netlify-plugin-rss
 inputs:
   - name: dirToScan

@@ -103,7 +103,7 @@ exports.extractMetadataFromFile = async function({
   publishDateSelector = null, // if null, use date created
   // probably wont change these
   descriptionSelector = 'meta[name=description]',
-  titleSelector = 'meta[property="og:title"]',
+  titleSelector = 'title',
   testMode = false, // if true, silence warnings that would normally be logged, for test running aesthetics
   debugMode = false // if true, log more things for plugin debugging
 }) {
@@ -121,7 +121,7 @@ exports.extractMetadataFromFile = async function({
     publishDate = birthtime;
   }
   // // not as reliable?
-  const title = $(titleSelector).attr('content');
+  const title = $(titleSelector).text();
   const contents = $(contentSelector).html();
   const output = {
     title,

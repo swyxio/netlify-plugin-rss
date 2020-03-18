@@ -1,13 +1,12 @@
 [build]
   command = "echo 'hi'"
   publish = "demo/publishDir"
-  base = "demo/"
 
 [[plugins]]
   package = "./index.js"
   [plugins.inputs]
     # required configs, customize as needed
-    dirToScan = "/blog" # a subfolder to scan. "/" to scan all
+    dirToScan = "/blog/posts" # a subfolder to scan. "/" to scan all
     authorName = "swyx"
     site_url = "https://swyx.io"
     feed_url = "https://swyx.io/rss.xml"

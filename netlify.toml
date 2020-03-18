@@ -12,3 +12,4 @@
     title = "netlify RSS Feed"
     rssDescription = "netlify-plugin-rss RSS Feed"
     categories = ['Technology', 'JAMstack', 'Web Development']
+    publishDateSelector = ".postlist-date"

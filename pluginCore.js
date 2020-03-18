@@ -111,7 +111,7 @@ exports.extractMetadataFromFile = async function({
   const $ = cheerio.load(readHTML);
   let publishDate;
   if (publishDateSelector) {
-    publishDate = $(publishDateSelector).text();
+    publishDate = $(publishDateSelector).html();
   } else {
     // no publishDate specified, use file created date
     const {

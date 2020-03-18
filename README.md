@@ -12,45 +12,40 @@ See our [Fixtures](/fixtures/publishDir) for example of generated RSS from a `/b
 
 ## Usage
 
-Specify the plugin in your `netlify.yml`. No config is required but we show the default options here.
+To install, add the following lines to your `netlify.toml` file:
 
-```yml
-build:
-  publish: build # NOTE: you should have a publish folder specified here for this to work
-  command: echo "your build command goes here"
-  NODE_ENV: 10.15.3
+```toml
+[[plugins]]
+package = "netlify-plugin-rss"
+  [plugins.inputs]
+  # required configs, customize as needed
+  dirToScan = "/blog" # a subfolder to scan. "/" to scan all
+  authorName = "swyx"
+  site_url = "https://swyx.io"
+  feed_url = "https://swyx.io/rss.xml"
+  title = "swyx RSS Feed"
+  rssDescription = "swyx.io RSS Feed"
+  categories = "['Technology', 'JAMstack', 'Web Development]"
 
-plugins:
-  - package: netlify-plugin-rss
-    config:
-      # required configs, customize as needed
-      dirToScan: '/blog' # a subfolder to scan. '/' to scan all
-      authorName: 'swyx'
-      site_url: 'https://swyx.io'
-      feed_url: 'https://swyx.io/rss.xml'
-      title: 'swyx RSS Feed'
-      rssDescription: 'swyx.io RSS Feed'
-      categories: "['Technology', 'JAMstack', 'Web Development]"
-      
-      # # optional configs, defaults shown
-      # rssFaviconUrl: 'https://swyx.io/favicon.png'
-      # docs: 'http://example.com/rss/docs.html'
-      # managingEditor: authorName
-      # webMaster: authorName
-      # copyright: 2020 ${authorName}
-      # language: 'en'
-      # pubDate: new Date().toUTCString(),
-      # ttl: '60' # aka refresh every hour
+  # # optional configs, defaults shown
+  # rssFaviconUrl = "https://swyx.io/favicon.png"
+  # docs = "http://example.com/rss/docs.html"
+  # managingEditor = "authorName"
+  # webMaster = "authorName"
+  # copyright = "2020 ${authorName}"
+  # language = "en"
+  # pubDate = "new Date().toUTCString(),"
+  # ttl = "60" # aka refresh every hour
 
-      # # cheerio selectors for extractMetadataFromFile
-      # # defaults shown
-      # contentSelector: 'main'
-      # publishDateSelector: null # 
-      # descriptionSelector: 'meta[name=description]' # probably no need to change
-      # titleSelector: 'meta[property="og:title"]' # probably no need to change
+  # # cheerio selectors for extractMetadataFromFile
+  # # defaults shown
+  # contentSelector = "main"
+  # publishDateSelector = # empty
+  # descriptionSelector = "meta[name=description]" # probably no need to change
+  # titleSelector = "meta[property=\"og:title\"]" # probably no need to change
 
-      # # developer configs
-      # debugMode: false # (for development) turn true for extra diagnostic logging
+  # # developer configs
+  # debugMode = false # (for development) turn true for extra diagnostic logging
 ```
 
 

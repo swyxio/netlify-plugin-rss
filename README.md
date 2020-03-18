@@ -2,6 +2,12 @@
 
 Generate an RSS feed from your static html files, agnostic of static site generator!
 
+## Demo
+
+This is a file generated from the repo in `/demo`: https://netlify-plugin-rss.netlify.com/rss.xml
+
+- note that it doesn't index `dontindexthis.html`: in [our plugin inputs](./netlify.toml) we specified `dirToScan` of `/blog` so only html files in that tree of folders is scanned.
+
 ## How it works
 
 You define a folder, the plugin recursively scans everything inside, sorts by publish date, and generates the appropriate XML.

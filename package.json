@@ -1,6 +1,6 @@
 {
   "name": "netlify-plugin-rss",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "netlify-plugin-rss",
   "main": "index.js",
   "repository": {

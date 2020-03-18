@@ -8,6 +8,8 @@ This is a file generated from the repo in `/demo`: https://netlify-plugin-rss.ne
 
 - note that it doesn't index anything outside of `/posts`: in [our plugin inputs](./netlify.toml) we specified `dirToScan` of `/posts` so only html files in that tree of folders is scanned.
 
+The demo uses Eleventy to generate the site, but this plugin itself doesnt rely on any static site generator, that is the point (Eleventy has [its own rss plugin](https://www.11ty.dev/docs/plugins/rss/)).
+
 ## How it works
 
 You define a folder, the plugin recursively scans everything inside, sorts by publish date, and generates the appropriate XML.

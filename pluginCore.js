@@ -17,17 +17,17 @@ exports.generateRSS = async function(opts) {
   const site_url = required(opts, 'site_url'); // eg 'https://swyx.io',
   const feed_url = `${site_url}/rss.xml`; // may want to make this configurable in future
   const {
-    title = opts.title || 'RSS Feed',
+    title,
     description = opts.rssDescription || 'RSS Feed for ' + rssFeedUrl,
     image_url = opts.rssFaviconUrl,
-    docs = 'http://example.com/rss/docs.html',
+    docs,
     managingEditor = authorName,
     webMaster = authorName,
     copyright = new Date().getFullYear() + ' ' + authorName,
-    language = 'en',
-    categories = ['Tech', 'Blog'],
+    language,
+    categories,
     pubDate = new Date().toUTCString(),
-    ttl = '60' // at most refresh every hour http://www.therssweblog.com/?guid=20070529130637
+    ttl // at most refresh every hour http://www.therssweblog.com/?guid=20070529130637
   } = opts;
   const feed = new RSS({
     title,
@@ -99,13 +99,13 @@ function required(obj, key) {
 
 exports.extractMetadataFromFile = async function({
   fileToRead,
-  contentSelector = 'main', // any css selector works
-  publishDateSelector = null, // if null, use date created
+  contentSelector, // any css selector works
+  publishDateSelector, // if null, use date created
   // probably wont change these
-  descriptionSelector = 'meta[name=description]',
-  titleSelector = 'title',
+  descriptionSelector,
+  titleSelector,
   testMode = false, // if true, silence warnings that would normally be logged, for test running aesthetics
-  debugMode = false // if true, log more things for plugin debugging
+  debugMode // if true, log more things for plugin debugging
 }) {
   const readHTML = await readFile(fileToRead);
   const $ = cheerio.load(readHTML);

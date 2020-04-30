@@ -6,18 +6,28 @@ inputs:
   - name: site_url
   - name: feed_url
   - name: title
+    default: RSS feed
   - name: rssDescription
   - name: categories
+    default: [Tech, Blog]
   - name: rssFaviconUrl
   - name: docs
+    default: 'http://example.com/rss/docs.html'
   - name: managingEditor
   - name: webMaster
   - name: copyright
   - name: language
+    default: en
   - name: pubDate
   - name: ttl
+    default: '60'
   - name: contentSelector
+    default: main
   - name: publishDateSelector
+    default: null
   - name: descriptionSelector
+    default: 'meta[name=description]'
   - name: titleSelector
+    default: title
   - name: debugMode
+    default: false

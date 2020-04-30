@@ -6,7 +6,6 @@ const chalk = require('chalk');
 
 module.exports = function netlifyPlugin(conf) {
   return {
-    name: 'netlify-plugin-rss',
     /* index html files preDeploy */
     onPostBuild: async ({
       constants: { BUILD_DIR },

@@ -10,7 +10,7 @@ module.exports = function netlifyPlugin(conf) {
     /* index html files preDeploy */
     onPostBuild: async ({
       constants: { BUILD_DIR },
-      pluginConfig: {
+      inputs: {
         dirToScan,
         rssFeedPath = path.join(BUILD_DIR, '/rss.xml'),
         ...rest

@@ -11,10 +11,10 @@ const chalk = require('chalk');
 exports.generateRSS = async function(opts) {
   // combines scanDir and extractMetadataFromFile
   // returns RSS
-  const BUILD_DIR = required(opts, 'BUILD_DIR'); // eg 'publish'
-  const dirToScan = required(opts, 'dirToScan'); // eg '/blog'
-  const authorName = required(opts, 'authorName'); // eg 'myname'
-  const site_url = required(opts, 'site_url'); // eg 'https://swyx.io',
+  const BUILD_DIR = opts.BUILD_DIR; // eg 'publish'
+  const dirToScan = opts.dirToScan; // eg '/blog'
+  const authorName = opts.authorName; // eg 'myname'
+  const site_url = opts.site_url; // eg 'https://swyx.io',
   const feed_url = `${site_url}/rss.xml`; // may want to make this configurable in future
   const {
     title = opts.title || 'RSS Feed',
@@ -88,14 +88,6 @@ exports.generateRSS = async function(opts) {
   });
   return feed.xml();
 };
-
-function required(obj, key) {
-  if (typeof obj[key] === 'undefined') {
-    console.error('Error: ' + key + ' is required');
-    process.exit(1);
-  }
-  return obj[key];
-}
 
 exports.extractMetadataFromFile = async function({
   fileToRead,

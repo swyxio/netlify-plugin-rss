@@ -2,8 +2,11 @@
 name: netlify-plugin-rss
 inputs:
   - name: dirToScan
+    required: true
   - name: authorName
+    required: true
   - name: site_url
+    required: true
   - name: feed_url
   - name: title
   - name: rssDescription

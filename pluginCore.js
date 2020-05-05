@@ -11,7 +11,7 @@ const chalk = require('chalk');
 exports.generateRSS = async function(opts) {
   // combines scanDir and extractMetadataFromFile
   // returns RSS
-  const BUILD_DIR = opts.BUILD_DIR; // eg 'publish'
+  const PUBLISH_DIR = opts.PUBLISH_DIR; // eg 'publish'
   const dirToScan = opts.dirToScan; // eg '/blog'
   const authorName = opts.authorName; // eg 'myname'
   const site_url = opts.site_url; // eg 'https://swyx.io',
@@ -44,7 +44,7 @@ exports.generateRSS = async function(opts) {
     pubDate,
     ttl
   });
-  const filesToScan = await exports.scanDir({ dirToScan, BUILD_DIR });
+  const filesToScan = await exports.scanDir({ dirToScan, PUBLISH_DIR });
   if (!opts.testMode) {
     console.log(
       `Found ${chalk.yellow(filesToScan.length)} files in ${chalk.blue(
@@ -56,7 +56,7 @@ exports.generateRSS = async function(opts) {
     filesToScan
       .map(async (filepath) => {
         const res = await exports.extractMetadataFromFile({
-          fileToRead: path.join(BUILD_DIR, dirToScan, filepath),
+          fileToRead: path.join(PUBLISH_DIR, dirToScan, filepath),
           ...opts
         });
         res.filepath = filepath;
@@ -127,14 +127,14 @@ exports.extractMetadataFromFile = async function({
 };
 
 exports.scanDir = async function({
-  BUILD_DIR,
+  PUBLISH_DIR,
   dirToScan,
   testMode = false, // if true, silence warnings that would normally be logged, for test running aesthetics
   debugMode = false // if true, log more things for plugin debugging
 }) {
-  let allHtmlFiles = await walk(path.join(BUILD_DIR, dirToScan));
+  let allHtmlFiles = await walk(path.join(PUBLISH_DIR, dirToScan));
   return allHtmlFiles.map((filepath) =>
-    path.relative(path.join(BUILD_DIR, dirToScan), filepath)
+    path.relative(path.join(PUBLISH_DIR, dirToScan), filepath)
   );
 };
 

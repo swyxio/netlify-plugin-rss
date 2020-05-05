@@ -28,7 +28,7 @@ const netlifyPlugin = require('../index.js');
     },
     constants: {
       // have to mock this too
-      BUILD_DIR: 'demo/publishDir'
+      PUBLISH_DIR: 'demo/publishDir'
     }
   });
 })();

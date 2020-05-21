@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // resolve all files
-const BUILD_DIR = path.join(__dirname, 'publishDir');
+const PUBLISH_DIR = path.join(__dirname, 'publishDir');
 
 // debug
 // console.log({ publishDirPath, manifest });
@@ -12,7 +12,7 @@ const pluginCore = require('../../pluginCore.js');
 test('scanDir works', async () => {
   const allHtml = await pluginCore.scanDir({
     dirToScan: '/',
-    BUILD_DIR,
+    PUBLISH_DIR,
     debugMode: false, // to future readers - turn this true to make pluginCore log out more stuff
     testMode: true
   });

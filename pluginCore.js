@@ -18,7 +18,7 @@ exports.generateRSS = async function(opts) {
   const feed_url = `${site_url}/rss.xml`; // may want to make this configurable in future
   const {
     title,
-    description = opts.rssDescription || 'RSS Feed for ' + rssFeedUrl,
+    description = opts.rssDescription || 'RSS Feed for ' + site_url,
     image_url = opts.rssFaviconUrl,
     docs,
     managingEditor = authorName,

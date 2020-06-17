@@ -1,6 +1,6 @@
 # NOTE: UP FOR ADOPTION
 
-I can help answer qtns but I don't have a lot of time to maintain this. I'd like to transfer ownership to someone who can be a good steward, and will be happy to stay on to help answer qtns if wanted. Pls open an issue if you use this plugin and you'd like to claim this project!
+I can help answer qtns but I don't have a lot of time to maintain this. I'd like to transfer ownership to someone who can be a good steward, and will be happy to stay on to help answer qtns if wanted. Pls open an issue *and tag me* if you use this plugin and you'd like to claim this project!
 
 ---
 
